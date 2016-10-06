@@ -16,15 +16,17 @@ Including another URLconf
 from django.conf.urls import patterns, include,url
 from django.contrib import admin
 from .settings import MEDIA_ROOT, DEBUG
+from students.view.journal import JournalView
 
 urlpatterns = patterns('',
 # Students urls
 url(r'^$', 'students.view.student.students_list', name='main'),
-url(r'^vid$', 'students.view.journal.vid', name='journal'),
 url(r'^stud_add$', 'students.view.student.stud_add', name='s_add'),
 url(r'^students/(?P<pk>\d+)/edit/$','students.view.student.student_edit',
 name='students_edit'),
 url(r'^students/(?P<pk>\d+)/delete/$','students.view.student.student_delete',name='students_delete'),
+#journal
+url(r'^journal/$', JournalView.as_view(), name='journal'),
 #Groups urls
 url(r'^grup$', 'students.view.groups.grup', name='groups'),
 url(r'^groups_add$', 'students.view.group.groups_add', name='groups_add'),
