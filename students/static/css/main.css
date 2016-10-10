@@ -36,3 +36,10 @@ select,
 input {
 max-width: 300px;
 }
+/*journal table styles*/
+td.day-box,
+td.day-header {
+	padding: 4px !important;
+	vertical-align: middle !important;
+	text-align: center;
+}
