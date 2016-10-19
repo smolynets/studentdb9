@@ -26,7 +26,7 @@ url(r'^students/(?P<pk>\d+)/edit/$','students.view.student.student_edit',
 name='students_edit'),
 url(r'^students/(?P<pk>\d+)/delete/$','students.view.student.student_delete',name='students_delete'),
 #journal
-url(r'^journal/$', JournalView.as_view(), name='journal'),
+url(r'^journal/(?P<pk>\d+)?/?$', JournalView.as_view(), name='journal'),
 #Groups urls
 url(r'^grup$', 'students.view.groups.grup', name='groups'),
 url(r'^groups_add$', 'students.view.group.groups_add', name='groups_add'),
