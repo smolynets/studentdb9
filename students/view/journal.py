@@ -8,6 +8,7 @@ from ..models.monthjournal import MonthJournal
 from ..models.student import  Student
 from ..util import paginate
 from django.http import JsonResponse
+from ..util import get_current_group
 class JournalView(TemplateView):
   template_name = 'students/journal.html'
   def get_context_data(self, **kwargs):
@@ -37,7 +38,10 @@ class JournalView(TemplateView):
       context['month_header'] = [{'day': d,
          'verbose': day_abbr[weekday(myear, mmonth, d)][:2]}
          for d in range(1, number_of_days+1)]
-      if kwargs.get('pk'):
+      current_group = get_current_group(self.request)
+      if current_group:
+        queryset = Student.objects.filter(student_group_id=current_group)
+      elif kwargs.get('pk'):
         queryset = [Student.objects.get(pk=kwargs['pk'])]
       else:
         # get all students from database
