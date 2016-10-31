@@ -43,8 +43,11 @@ function initGroupSelector() {
     }
  
 
-
-   
+function initDateFields() {
+$('#bd').datetimepicker({
+'format': 'YYYY-MM-DD'
+});
+}
 
 
 $(document).ready(function(){
