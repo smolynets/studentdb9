@@ -40,7 +40,7 @@ class JournalView(TemplateView):
          for d in range(1, number_of_days+1)]
       current_group = get_current_group(self.request)
       if current_group:
-        queryset = Student.objects.filter(student_group_id=current_group)
+      	queryset = Student.objects.filter(student_group_id=current_group)
       elif kwargs.get('pk'):
         queryset = [Student.objects.get(pk=kwargs['pk'])]
       else:

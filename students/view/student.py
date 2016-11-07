@@ -12,9 +12,9 @@ from ..util import get_current_group
 def students_list(request):
    current_group = get_current_group(request)
    if current_group:
-     students = Student.objects.filter(student_group_id=current_group)
-   else:  
-     students = Student.objects.all()
+      students = Student.objects.filter(student_group_id=current_group)
+   else:   
+      students = Student.objects.all()
    # try to order students list
    order_by = request.GET.get('order_by', '')
    if order_by in ('last_name', 'first_name', 'ticket', '#'):

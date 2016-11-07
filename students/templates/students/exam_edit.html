@@ -35,7 +35,7 @@
     <div class="form-group{% if errors.date %} has-error{% endif %}">
         <label for="" class="control-label col-sm-2">Дата*</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="date" id="date" value="{{exam.date|date:"Y-m-d"}}">
+            <input type="text" class="dateinput form-control" class="form-control" name="date" id="date" value="{{exam.date|date:"Y-m-d"}}">
             <span class="help-block"> {{ errors.date }}</span>
         </div>
     </div>

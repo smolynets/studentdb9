@@ -43,7 +43,7 @@ class="form-control">
 <div class="form-group {% if errors.date %}has-error{% endif%}">
 <label for="date" class="col-sm-2 control-label">Дата проведення*</label>
 <div class="col-sm-10">
-<input type="text" value="{{ request.POST.date }}"
+<input type="text" class="dateinput form-control" value="{{ request.POST.date }}"
 name="date" id="date" class="form-control"
 placeholder="Напр. 1984-12-30" />
 <span class="help-block">{{ errors.date }}</span>

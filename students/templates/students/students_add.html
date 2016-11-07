@@ -41,7 +41,7 @@ name="middle_name" id="middle_name" class="form-control" />
 <div class="form-group {% if errors.birthday %}has-error{% endif%}">
 <label for="birthday" class="col-sm-2 control-label">Дата Народження*</label>
 <div class="col-sm-10">
-<input type="text" value="{{ request.POST.birthday }}"
+<input type="text" class="dateinput form-control" value="{{ request.POST.birthday }}"
 name="birthday" id="birthday" class="form-control"
 placeholder="Напр. 1984-12-30" />
 <span class="help-block">{{ errors.birthday }}</span>
