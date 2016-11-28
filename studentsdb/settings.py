@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uk-Uk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -123,3 +123,69 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
 
 from .mail import *
+
+
+###########################
+
+#loggers
+LOG_FILE = os.path.join(BASE_DIR, 'studentsdb.log')
+LOG_FILE2 = os.path.join(BASE_DIR, 'mail_errors')
+
+LOGGING = {
+	'version': 1,
+	'disable_existing_loggers': True,
+	'formatters': {
+	'verbose': {
+	  'format': '%(levelname)s %(asctime)s %(module)s: %(message)s'
+	  },
+	  'simple': {
+	    'format': '%(levelname)s: %(message)s'
+	  },
+   },
+   'handlers': {
+     'null': {
+       'level': 'DEBUG',
+       'class': 'logging.NullHandler',
+     },
+     'console': {
+       'level': 'INFO',
+       'class': 'logging.StreamHandler',
+       'formatter': 'verbose',
+     },
+     'mail_admins': {
+       'level': 'INFO',
+       'class': 'django.utils.log.AdminEmailHandler',
+       'email_backend': 'django.core.mail.backends.filebased.EmailBackend',
+            
+     },
+     'file': {
+     'level': 'INFO',
+     'class': 'logging.FileHandler',
+     'filename': LOG_FILE,
+     'formatter': 'verbose'
+     },
+     'file2': {
+     'level': 'INFO',
+     'class': 'logging.FileHandler',
+     'filename': LOG_FILE2,
+     'formatter': 'verbose'
+     },
+   },
+   'loggers': {
+     'django': {
+       'handlers': ['null'],
+       'propagate': True,
+       'level': 'INFO',
+     },
+     'students.signals': {
+     'handlers': ['file', 'mail_admins'],
+     'level': 'INFO',
+     },
+     'students.view.contact_admin': {
+     'handlers': ['file2', 'mail_admins'],
+     'level': 'INFO',
+     }
+
+   }
+}
+
