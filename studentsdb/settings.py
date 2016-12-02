@@ -155,7 +155,7 @@ LOGGING = {
      'mail_admins': {
        'level': 'INFO',
        'class': 'django.utils.log.AdminEmailHandler',
-       'email_backend': 'django.core.mail.backends.filebased.EmailBackend',
+       'email_backend': 'django.core.mail.backends.smtp.EmailBackend',
             
      },
      'file': {
@@ -178,7 +178,7 @@ LOGGING = {
        'level': 'INFO',
      },
      'students.signals': {
-     'handlers': ['file', 'mail_admins'],
+     'handlers': ['file','console', 'mail_admins'],
      'level': 'INFO',
      },
      'students.view.contact_admin': {
