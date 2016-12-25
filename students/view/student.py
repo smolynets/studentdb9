@@ -103,14 +103,14 @@ def stud_add(request):
         return HttpResponseRedirect( u'%s?status_message=Студента успішно додано!'  % reverse('main'))
       else:
         # render form with errors and previous user input
-        return render(request, 'students/students_add.html',
+        return render(request, 'students/students_add_edit.html',
         {'groups': Group.objects.all().order_by('title'),'errors': errors})
     elif request.POST.get('cancel_button') is not None:
       # redirect to home page on cancel button
       return HttpResponseRedirect( u'%s?status_message=Додавання студента скасовано!' % reverse('main'))
   else:
    # initial form render
-   return render(request, 'students/students_add.html',
+   return render(request, 'students/students_add_edit.html',
    {'groups': Group.objects.all().order_by('title')})
 
 
@@ -178,7 +178,7 @@ def student_edit(request, pk):
                         data.student_group_id = gr[0]
 
             if errors:
-                return render(request, 'students/students_edit.html', {'pk': pk, 'student': data, 'errors': errors, 'groups': groups})
+                return render(request, 'students/students_add_edit.html', {'pk': pk, 'student': data, 'errors': errors, 'groups': groups})
             else:
                 data.save()
                 return HttpResponseRedirect( reverse('main'))
@@ -188,7 +188,7 @@ def student_edit(request, pk):
         
     else:
         return render(request,
-                      'students/students_edit.html',
+                      'students/students_add_edit.html',
                       {'pk': pk, 'student': students[0], 'groups': groups})
 
 

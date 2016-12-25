@@ -46,3 +46,11 @@ td.day-header {
 #ajax-progress-indicator {
 	display: none;
 }
+
+#title_form_add{
+  padding-left: 180px;	
+}
+
+#title_form_edit{
+  padding-left: 100px;	
+}

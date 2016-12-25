@@ -93,11 +93,15 @@ def groups_edit(request, pk):
           errors['title'] = u"Імʼя є обовʼязковим."
         else:
           data.title = title
+
         leader = request.POST.get('leader', '').strip()
-        try:
-          st = Student.objects.filter(pk=leader)
-          data.leader = st[0]
-        except:
+        if not leader:
+          errors['leader'] = u"Імʼя старости є обовʼязковим."
+        else:
+          try:
+            st = Student.objects.filter(pk=leader)
+            data.leader = st[0]
+          except:
             return HttpResponseRedirect( u'%s?status_message=Редагування групи скасовано!Група  не містить студентів!' % reverse('groups'))
           
         
@@ -110,7 +114,7 @@ def groups_edit(request, pk):
         else:
           # render form with errors and previous user input
           return render(request, 'students/groups_edit.html',
-          {'students': Student.objects.all().order_by('last_name'),'errors': errors})
+          {'pk': pk,'students': Student.objects.all().order_by('last_name'),'errors': errors})
       elif request.POST.get('cancel_button') is not None:
         # redirect to home page on cancel button
         return HttpResponseRedirect( u'%s?status_message=Редагування групи скасовано!' % reverse('groups'))
