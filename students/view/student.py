@@ -173,7 +173,7 @@ def student_edit(request, pk):
                 else:
                     grps = Group.objects.filter(leader=Student.objects.get(pk=pk))
                     if len(grps) > 0 and int(student_group_id) != grps[0].pk:
-                        errors['student_group'] = u"Студент є старостою іншої групи"
+                        errors['student_group_id'] = u"Студент є старостою іншої групи"
                     else:
                         data.student_group_id = gr[0]
 
@@ -181,7 +181,7 @@ def student_edit(request, pk):
                 return render(request, 'students/students_add_edit.html', {'pk': pk, 'student': data, 'errors': errors, 'groups': groups})
             else:
                 data.save()
-                return HttpResponseRedirect( reverse('main'))
+                return HttpResponseRedirect(u'%s?status_message=Редагування студента завершено успішно!' % reverse('main'))
         elif request.POST.get('cancel_button') is not None:
 
             return HttpResponseRedirect(u'%s?status_message=Редагування студента скасовано!' % reverse('main'))
