@@ -38,11 +38,18 @@ max-width: 300px;
 }
 /*journal table styles*/
 td.day-box,
-td.day-header {
+th.day-header {
 	padding: 4px !important;
 	vertical-align: middle !important;
 	text-align: center;
+	color: green;
 }
+
+#check-box{
+  color: #ffffff;
+}
+
+
 #ajax-progress-indicator {
 	display: none;
 }
@@ -53,4 +60,8 @@ td.day-header {
 
 #title_form_edit{
   padding-left: 100px;	
+}
+
+.modal-content{
+   background: #00FFFF;	
 }

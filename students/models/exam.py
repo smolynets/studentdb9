@@ -20,3 +20,11 @@ class Exam(models.Model):
     verbose_name=u"Дати")
   def __unicode__(self):
     return u"%s %s" % (self.title, self.group)
+
+
+
+
+
+
+
+

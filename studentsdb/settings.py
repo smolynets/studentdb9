@@ -170,6 +170,11 @@ LOGGING = {
      'filename': LOG_FILE2,
      'formatter': 'verbose'
      },
+     'database': {
+            'level': 'DEBUG',
+            'class': 'studentsdb.custom_handlers.DatabaseHandler',
+            'formatter': 'verbose'
+     },
    },
    'loggers': {
      'django': {
@@ -178,7 +183,7 @@ LOGGING = {
        'level': 'INFO',
      },
      'students.signals': {
-     'handlers': ['file','console', 'mail_admins'],
+     'handlers': ['file','console', 'mail_admins', 'database'],
      'level': 'INFO',
      },
      'students.view.contact_admin': {

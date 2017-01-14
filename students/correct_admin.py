@@ -15,8 +15,7 @@ class StudentFormAdmin(ModelForm):
         If yes, then ensure it's the same as selected group."""
         # get group where current student is a leader
         groups = Group.objects.filter(leader=self.instance)
-        if len(groups) > 0 and \
-            self.cleaned_data['student_group_id'] != groups[0]:
+        if len(groups) > 0 and self.cleaned_data['student_group_id'] != groups[0].id:
             raise ValidationError(u'Студент є старостою іншої групи.',
                 code='invalid')
 
