@@ -7,7 +7,7 @@ from datetime import datetime
 from django.contrib import messages
 from datetime import datetime
 def logs(request):
-   logs = logentry.objects.all()
+   logs = logentry.objects.order_by('asctime').reverse()
    # paginate logs
    paginator = Paginator(logs, 5)
    page = request.GET.get('page')
