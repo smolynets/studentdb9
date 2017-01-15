@@ -2,9 +2,7 @@ import logging
 
 
 class DatabaseHandler(logging.Handler):
-    def __init__(self):
-        # run the regular Handler __init__
-        logging.Handler.__init__(self)
+    
 
     def emit(self, record):
         
